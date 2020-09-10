@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.styleButton{
+  width: 100px;
+  margin-bottom: 30px;
+  margin-top: 5px;
+  margin-left: 145px;
+}
+
+.divGeral{
+  margin-left: 37rem;
+  margin-top: 6rem;
 }
