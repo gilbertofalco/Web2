@@ -93,7 +93,7 @@ export default class Login extends React.Component {
                         <div>
                             <input class="form-control" type="text" name="login" placeholder="Login" value={this.state.login} onChange={e => this.setState({ login: e.target.value })} />
                             <input class="form-control" type="password" name="senha" placeholder="Senha" value={this.state.senha} onChange={e => this.setState({ senha: e.target.value })} />
-                            <a className="botoes"><button class="btn btn-outline-primary" type="submit">Logar</button></a>
+                            <button class="btn btn-outline-primary" type="submit">Logar</button>
                         </div>
                     </form>
 
@@ -101,7 +101,7 @@ export default class Login extends React.Component {
                         <input class="form-control" type="text" name="login" placeholder="Login" value={this.state.loginC} onChange={e => this.setState({ loginC: e.target.value })} />
                         <input class="form-control" type="password" name="senha" placeholder="Senha" value={this.state.senhaC} onChange={e => this.setState({ senhaC: e.target.value })} />
                         <input class="form-control" type="password" name="senha" placeholder="Senha" value={this.state.confirmarSenha} onChange={e => this.setState({ confirmarSenha: e.target.value })} />
-                        <a className="botoes"><button  class="btn btn-outline-secondary" type="submit">Cadastrar</button></a>
+                        <button  class="btn btn-outline-secondary" type="submit">Cadastrar</button>
                     </form>
                 </div>
             </>

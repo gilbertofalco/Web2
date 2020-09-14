@@ -9,8 +9,8 @@ export default class Router extends Component{
         return(
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/" component={Login}/>
-                    <Route path="/buscaCep" component={buscaCep}/>
+                    <Route exact path="/Web2" component={Login}/>
+                    <Route path="/Web2/buscaCep" component={buscaCep}/>
                 </Switch>
             </BrowserRouter>
         )
