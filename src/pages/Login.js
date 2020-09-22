@@ -11,20 +11,20 @@ export default class Login extends React.Component {
         loginC: "",
         senhaC: "",
         confirmarSenha: "",
-        erro: ""
+        erroLogin: "",
+        erroCad: ""
     };
 
-
-//certo
-
+    
     cliqueLogin = async e => {
+
         e.preventDefault();
         const { login, senha } = this.state;
 
         console.log(login)
         console.log(senha)
         if (!login || !senha) {
-            this.setState({ error: "Preencha todos os dados para logar" });
+            this.setState({ erro: "Preencha todos os dados para logar" });
         } else {
             try {
                 await axios.post(`https://reqres.in/api/login`, {
@@ -34,15 +34,17 @@ export default class Login extends React.Component {
                     crossDomain: true
                 }).then(result => {
                     if (result.request.status === 200){
-                        alert("Login efetuado com sucesso")
+                        localStorage.setItem('tokenLogin', result.data.token)
                         this.props.history.push("/buscaCep")
                     }
-                    else (alert("Login ou senha inválidos"))
+                    else {
+                        this.state.setState({erro: "Usuário ou senha incorreto"})
+                    }  
                 })
 
             } catch (err) {
                 this.setState({
-                    error:
+                    erro:
                         "Houve um problema com o login, verifique suas credenciais. T.T"
                 });
             }
@@ -56,7 +58,7 @@ export default class Login extends React.Component {
 
         if(senhaC === confirmarSenha) {
             if (!loginC || !senhaC) {
-                this.setState({ error: "Preencha todos os dados para se cadastrar" });
+                this.setState({ erroCad: "Preencha todos os dados para se cadastrar" });
             } else {
                 try {
                     await axios.post(`https://reqres.in/api/register`, {
@@ -67,25 +69,27 @@ export default class Login extends React.Component {
                     }).then(result => {
                         console.log(result)
                         if (result.request.status === 200){
-                            alert("Usuário cadastrado, efetue o login")
+                            this.state.setState({erro: "Usuário cadastrado, efetue o login"})
                         }
-                        else (alert("Erro ao cadastrar"))
+                        else (
+                            this.state.setState({erro: "Ocorreu um erro ao cadastrar usuário"})
+                        )
                     })
     
                 } catch (err) {
                     this.setState({
-                        error:
+                        erroCad:
                             "Houve um problema com o login, verifique suas credenciais. T.T"
                     });
                 }
             }
         } else {
-            alert('Senhas não conferem')
+            this.setState({ erroCad: "Login e senha não conferem"});
         }
     }
 
     render() {
-
+        localStorage.setItem('tokenLogin', "");
         return (
             <>
                 <div>
@@ -93,6 +97,7 @@ export default class Login extends React.Component {
                         <div>
                             <input class="form-control" type="text" name="login" placeholder="Login" value={this.state.login} onChange={e => this.setState({ login: e.target.value })} />
                             <input class="form-control" type="password" name="senha" placeholder="Senha" value={this.state.senha} onChange={e => this.setState({ senha: e.target.value })} />
+                            <span value={this.state.erro} className="mensagemUsuario">{this.state.erro}</span>
                             <a className="botoes"><button class="btn btn-outline-primary" type="submit">Logar</button></a>
                         </div>
                     </form>
@@ -101,6 +106,7 @@ export default class Login extends React.Component {
                         <input class="form-control" type="text" name="login" placeholder="Login" value={this.state.loginC} onChange={e => this.setState({ loginC: e.target.value })} />
                         <input class="form-control" type="password" name="senha" placeholder="Senha" value={this.state.senhaC} onChange={e => this.setState({ senhaC: e.target.value })} />
                         <input class="form-control" type="password" name="senha" placeholder="Senha" value={this.state.confirmarSenha} onChange={e => this.setState({ confirmarSenha: e.target.value })} />
+                        <span className="mensagemUsuario">{this.state.erroCad}</span>
                         <a className="botoes"><button  class="btn btn-outline-secondary" type="submit">Cadastrar</button></a>
                     </form>
                 </div>

@@ -7,6 +7,11 @@
   width: 300px;
 }
 
+.mensagemUsuario{
+  display: block;
+  color: red;
+}
+
 .styleButton{
   width: 100px;
   margin-bottom: 30px;
