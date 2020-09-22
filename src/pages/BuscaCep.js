@@ -18,9 +18,9 @@ export default class BuscaCep extends React.Component{
 
   buscarCep() {
     let cep = document.getElementById('cep');
-    this.state.setState({erro: ""})
+    this.setState({erro: ""})
     if(cep.value < 3){
-      this.state.setState({erro: "Cep inválido"})
+      this.setState({erro: "Cep inválido"})
     } else {
      
       let cepParaPesquisa = 'https://viacep.com.br/ws/' + cep.value + '/json'; 
@@ -62,7 +62,7 @@ export default class BuscaCep extends React.Component{
                   <input type="text" id="logradouro" value={this.state.endereco} class="margemInput form-control" ></input>
                   <label for="">Faixa de Numero</label>
                   <input type="text" id="complemento" value={this.state.faixaDeNumero} class="margemInput form-control" ></input>
-                  <a href="/" id="sair">Sair</a>
+                  <a href="/Web2" id="sair">Sair</a>
               </div>
           </div>
       </div>
