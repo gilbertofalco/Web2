@@ -11,10 +11,10 @@ export default class Router extends Component{
         return(
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/" component={Login}/>
+                    <Route exact path="/Web2" component={Login}/>
                     <PrivateRouter 
                         exact
-                        path="/buscaCep" 
+                        path="/Web2/buscaCep"
                         component={buscaCep}
                     />
                 </Switch>
