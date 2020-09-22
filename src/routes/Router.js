@@ -14,7 +14,7 @@ export default class Router extends Component{
                     <Route exact path="/Web2" component={Login}/>
                     <PrivateRouter 
                         exact
-                        path="/Web2/buscaCep"
+                        path="/buscaCep"
                         component={buscaCep}
                     />
                 </Switch>
