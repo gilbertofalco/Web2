@@ -1,16 +1,22 @@
 import React,{Component} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
-
+import { PrivateRouter } from '../components/privateRoute';
 import buscaCep from '../pages/BuscaCep'
 import Login from '../pages/Login'
 
 export default class Router extends Component{
+
     render(){
+        console.log(localStorage.getItem('tokenLogin'))
         return(
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/Web2" component={Login}/>
-                    <Route path="/Web2/buscaCep" component={buscaCep}/>
+                    <PrivateRouter 
+                        exact
+                        path="/Web2/buscaCep"
+                        component={buscaCep}
+                    />
                 </Switch>
             </BrowserRouter>
         )

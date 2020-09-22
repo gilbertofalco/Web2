@@ -11,13 +11,17 @@ export default class BuscaCep extends React.Component{
         cidade: "",
         estado: "",
         endereco: "",
-        faixaDeNumero: ""
+        faixaDeNumero: "",
+        erro: ""
     }
   }
 
   buscarCep() {
-      console.log('Chegou aqui')
-      let cep = document.getElementById('cep');
+    let cep = document.getElementById('cep');
+    this.state.setState({erro: ""})
+    if(cep.value < 3){
+      this.state.setState({erro: "Cep inválido"})
+    } else {
      
       let cepParaPesquisa = 'https://viacep.com.br/ws/' + cep.value + '/json'; 
       axios.get(cepParaPesquisa)
@@ -27,6 +31,7 @@ export default class BuscaCep extends React.Component{
         this.setState({endereco: resp.data.logradouro})
         this.setState({faixaDeNumero: resp.data.complemento})
       });
+    }
   }
 
   render() {
@@ -44,7 +49,7 @@ export default class BuscaCep extends React.Component{
               <div class="column">
                   <label for="">Escolha um CEP que deseja informações</label>
                   <input type="text" placeholder="Digite um CEP válido" id="cep" data-mask="00000000" class="margemInput form-control" ></input>
-                  <span id="mensagemValidacao"></span>
+                  <span value={this.state.erro} className="mensagemUsuario">{this.state.erro}</span>
                   <button id="botaoEnviar" onClick={() => this.buscarCep()} class="styleButton btn-primary btn">Buscar</button>
               </div>
       
