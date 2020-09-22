@@ -19,7 +19,7 @@ export default class BuscaCep extends React.Component{
   buscarCep() {
     let cep = document.getElementById('cep');
     this.setState({erro: ""})
-    if(cep.value < 3){
+    if(cep.value.length < 3 || cep.value.length > 8){
       this.setState({erro: "Cep inválido"})
     } else {
      
