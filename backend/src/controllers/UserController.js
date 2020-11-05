@@ -9,11 +9,10 @@ module.exports = {
     },
 
     async store(req, res) {
-        const { name, password, email } = req.body;
+        const { password, email } = req.body;
         let user = await User.findOne({ email });
         if (!user) {
             user = await User.create({
-                name,
                 password,
                 email,
             });

@@ -43,10 +43,13 @@ export default class Login extends React.Component {
                 })
 
             } catch (err) {
+        
                 this.setState({
                     erro:
                         "Houve um problema com o login, verifique suas credenciais. T.T"
+                        
                 });
+                
             }
         }
 
@@ -81,6 +84,7 @@ export default class Login extends React.Component {
                         erroCad:
                             "Houve um problema com o login, verifique suas credenciais. T.T"
                     });
+                    console.log(err);
                 }
             }
         } else {
