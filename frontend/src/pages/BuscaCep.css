@@ -1,0 +1,43 @@
+.column{
+  display: flex;
+  flex-direction: column;
+  margin: 0%;
+}
+.margemInput{
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+.mensagemUsuario{
+  display: block;
+  color: red;
+}
+
+.styleButton{
+  width: 100px;
+  margin-bottom: 30px;
+  margin-left: 200px;
+}
+
+.divGeral{
+  margin-left: 37rem;
+  margin-top: 6rem;
+}
+
+h1{
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: rgb(236, 236, 236);
+}
+
+#mensagemValidacao{
+  color: red;
+}
+
+#sair {
+  text-decoration: none;
+  color: black;
+}
