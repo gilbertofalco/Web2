@@ -27,13 +27,13 @@ export default class Login extends React.Component {
             this.setState({ erro: "Preencha todos os dados para logar" });
         } else {
             try {
-                await axios.post(`https://reqres.in/api/login`, {
+                await axios.post(`https://localhost:3333/users`, {
                     email: login,
                     password: senha
                 }, {
                     crossDomain: true
                 }).then(result => {
-                    if (result.request.status === 200){
+                    if (!result.request.status){
                         localStorage.setItem('tokenLogin', result.data.token)
                         this.props.history.push("/buscaCep")
                     }
@@ -61,14 +61,14 @@ export default class Login extends React.Component {
                 this.setState({ erroCad: "Preencha todos os dados para se cadastrar" });
             } else {
                 try {
-                    await axios.post(`https://reqres.in/api/register`, {
+                    await axios.post(`http://localhost:3333/users`, {
                         email: loginC,
                         password: senhaC
                     }, {
                         crossDomain: true
                     }).then(result => {
                         console.log(result)
-                        if (result.request.status === 200){
+                        if (!result.request.status){
                             this.state.setState({erro: "Usuário cadastrado, efetue o login"})
                         }
                         else (
